@@ -1,0 +1,33 @@
+Provide instructions on how to build and use the module:
+
+1.  create module for S3 bucket to use as resuable code
+
+Steps to use :-
+
+create terraform  main.tf file in directory [make sure terraform and aws cli is configure]
+
+put below content on main.tf
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+module s3_bucket {
+  source = "github.com/ramee2/Well/s3buket"
+  bucket_prefix = "this-is-only-a-test-bucket-delete-assignment"
+  target_bucket = "this-is-the-target-bucket-assignment"
+}
+
+
+2. fetch the module from repo/registery
+    terraform get
+    
+3. terraform init
+
+4. terraform plan
+
+5. terraform apply --auto-approve
+
+6. It will create two bucket in S3 (The name started with  terraformtes-* will have all access like versing, KMS, tag etc, the second bucket we are using for log)
+
+
